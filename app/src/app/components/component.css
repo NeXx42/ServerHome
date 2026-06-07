@@ -10,7 +10,20 @@
     gap: 15px;
 }
 
-.Container>h3 {
+.Container_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Container_header>h3 {
     font-size: 15px;
     font-weight: 400;
+}
+
+.Container_header>button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+
+    cursor: pointer;
 }

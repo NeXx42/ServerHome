@@ -1,0 +1,88 @@
+.Modal_EditActions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    transition: all .2s;
+}
+
+.Modal_EditActions>h2 {
+    text-align: center;
+}
+
+.Modal_EditActions>span {
+    color: red;
+
+    padding: 15px;
+
+    background-color: var(--global-secondary-bg);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    text-align: center;
+}
+
+.Modal_EditActions_Container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 1000px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.Modal_EditActions_Entry {
+    padding: 15px;
+
+    background-color: var(--global-secondary-bg);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Modal_EditActions_Entry>div {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.Modal_EditActions_Entry>div>input {
+    outline: none;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    padding: 5px 5px;
+}
+
+.Modal_EditActions_Entry>button {
+    margin-left: auto;
+    width: 100px;
+
+    padding: 5px 15px;
+
+    background-color: rgb(186, 30, 30);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    cursor: pointer;
+}
+
+
+.Modal_EditActions_Controls {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.Modal_EditActions_Controls>button {
+    cursor: pointer;
+    padding: 5px 15px;
+    width: 60px;
+
+    background-color: var(--global-secondary-bg);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+}

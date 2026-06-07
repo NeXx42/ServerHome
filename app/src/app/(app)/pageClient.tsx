@@ -44,13 +44,10 @@ const refitGraph = (graph: GraphData[], currentTime: number, newDataPoint: strin
 }
 
 async function fetchSysInfo(url: string): Promise<GlancesInfo> {
-
     if (url.endsWith("/"))
         url = url.substring(0, url.length - 1);
 
-    const res = await fetch(`${url}/api/4/all`);
-
-    //if (!res.ok)
+    const res = await fetch(`/api/info?url=${url}`);
     return res.json();
 }
 

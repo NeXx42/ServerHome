@@ -1,0 +1,18 @@
+{
+    "title": "Home Server",
+    "glancesUrl": "http://192.168.0.10:61208/",
+    "links": [
+        {
+            "name": "Adguard",
+            "url": "https://adguard.local/",
+            "iconUrl": "https://adguard.local/assets/favicon.png"
+        }
+    ],
+    "actions": [
+        {
+            "name": "Update Yugen",
+            "description": "repulls that latest version of yugen",
+            "scriptLocation": "/mnt/docker/updateYugen.sh"
+        }
+    ]
+}

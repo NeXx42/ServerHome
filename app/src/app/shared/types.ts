@@ -1,11 +1,32 @@
-import { exportPages } from "next/dist/export/worker";
-
 export interface GraphData {
     time: number;
     relativeTime: number;
 
     value: string,
 }
+
+export interface Config {
+    title?: string;
+    glancesUrl: string;
+
+    links?: Config_Links[];
+    actions?: Config_Actions[];
+}
+
+export interface Config_Links {
+    name?: string;
+    iconUrl?: string;
+    url?: string;
+}
+
+export interface Config_Actions {
+    name?: string;
+    description?: string;
+    scriptLocation?: string;
+}
+
+
+
 
 export interface GlancesInfo {
     processcount?: GlancesInfo_ProcessCount;

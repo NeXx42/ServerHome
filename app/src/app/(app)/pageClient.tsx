@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import GraphComponent from "../components/graphComponent";
-import { GlancesInfo, GraphData } from "../shared/types";
+import { Config, GlancesInfo, GraphData } from "../shared/types";
 
 import "./page.css"
 import CardComponent from "../components/cardComponent";
@@ -10,6 +10,8 @@ import StorageComponent from "../components/storageComponent";
 import { bytesToGiB } from "../shared/helperFunctions";
 import Component from "../components/component";
 import DockerComponent from "../components/dockerComponent";
+import ActionsComponent from "../components/actionsComponent";
+import LinksComponent from "../components/linksComponent";
 
 const updateIntervals = [
     500,
@@ -35,14 +37,18 @@ const refitGraph = (graph: GraphData[], currentTime: number, newDataPoint: strin
     ]
 }
 
-async function fetchSysInfo(): Promise<GlancesInfo> {
-    const res = await fetch("/api/server");
+async function fetchSysInfo(url: string): Promise<GlancesInfo> {
+
+    if (url.endsWith("/"))
+        url = url.substring(0, url.length - 1);
+
+    const res = await fetch(`${url}/api/4/all`);
 
     //if (!res.ok)
     return res.json();
 }
 
-export default function () {
+export default function ({ config }: { config: Config }) {
     const [sysInfo, setSysInfo] = useState<GlancesInfo | undefined>();
 
     const [cpuData, setCpuData] = useState<GraphData[]>([]);
@@ -52,7 +58,7 @@ export default function () {
 
     useEffect(() => {
         const work = () => {
-            fetchSysInfo()
+            fetchSysInfo(config.glancesUrl)
                 .then((result) => {
                     const currentTime = Date.now();
                     setSysInfo(result);
@@ -73,7 +79,7 @@ export default function () {
     return (
         <div className="HomePage">
             <div className="HomePage_Info">
-                <h1>Server Dashboard</h1>
+                <h1>{config.title ?? "Dashboard"}</h1>
                 <div className="HomePage_Info_Polling">
                     Poll rate
                     <div>
@@ -97,7 +103,7 @@ export default function () {
                     <CardComponent value={`${aliveContainerCount} / ${sysInfo?.containers?.length ?? 0}`} description={`alive containers`} />
                 </Component>
                 <Component title="Uptime">
-                    <CardComponent value={`${sysInfo?.uptime}`} description="since last restart" />
+                    <CardComponent value={`${sysInfo?.uptime ?? "-"}`} description="since last restart" />
                 </Component>
 
                 <Component title="CPU Usage" rowSpan={2} columnSpan={2} >
@@ -117,12 +123,12 @@ export default function () {
                     <DockerComponent containers={sysInfo?.containers ?? []} />
                 </Component>
                 <Component title="Actions" rowSpan={4} columnSpan={2}>
-
+                    <ActionsComponent actions={config.actions ?? []} />
                 </Component>
 
 
                 <Component title="Links" rowSpan={2} columnSpan={4}>
-
+                    <LinksComponent links={config.links ?? []} />
                 </Component>
             </div>
         </div>

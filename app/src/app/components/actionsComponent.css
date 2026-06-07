@@ -1,0 +1,34 @@
+.Component_Actions {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: scroll;
+}
+
+.Component_Actions>button {
+    outline: hidden;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+    padding: 10px;
+
+    background-color: var(--global-secondary-bg);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.Component_Actions>button:hover {
+    background-color: var(--primary-accent-bg);
+    color: var(--primary-accent);
+}
+
+.Component_Actions_Info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

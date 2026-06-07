@@ -7,52 +7,38 @@ Very simple dashboard for a home server. All metrics are retrieved from glances.
 
 ## Preview
 
+<img width="1919" height="980" alt="image" src="https://github.com/user-attachments/assets/0fdc366a-5aaa-47eb-9924-2a6947169f45" />
+<img width="1919" height="690" alt="image" src="https://github.com/user-attachments/assets/e33c146a-2e83-48e2-adc3-8233fbaca418" />
+
+
+
 ## Configuration
 
 The config is mounted at /app/config, and is a json file. The structure is the following:
 
 ### Main
-`title`
-: Title of the dashboard
-: Optional
-
-`glancesUrl`
-: url of glances
-: Required
-
-`webhookConsumerUrl`
-: url of used for curl actions
-: Optional
+| Field              | Description               | Required  |
+| ------------------ | ------------------------- | ----------|
+| title              | Title of the dashboard    | String?   |
+| glancesUrl         | URL of glances            | String!   |
+| webhookConsumerUrl | URL used for curl actions | String?   |
+| actions            | List of actions           | Actions[]?|
+| links              | List of links             | Links[]?  |
 
 ### Actions
-`name`
-: name of action
-: Optional
-
-`description`
-: description for action
-: Optional
-
-`curlName`
-: if provided will send post request to "{webhookConsumerUrl}/run/{curlName}"
-: Optional
-
-`scriptName`
-: if provided will run sh script in /mnt/scripts/{scriptName}
-: Optional
+| Field       | Description                                                                   | Type    |
+| ----------- | ----------------------------------------------------------------------------- | ------- |
+| name        | Name of action                                                                | String? |
+| description | Description for action                                                        | String? |
+| curlName    | If provided will send POST request to `"{webhookConsumerUrl}/run/{curlName}"` | String? |
+| scriptName  | If provided will run shell script in `/mnt/scripts/{scriptName}`              | String? |
 
 ### Links
-`name`
-: name of link
-: Optional
-
-`url"
-: url of link
-: Optional
-
-`iconUrl"
-: url of link's icon
-: Optional
+| Field   | Description        | Type    |
+| ------- | ------------------ | ------- |
+| name    | Name of link       | String? |
+| url     | URL of link        | String? |
+| iconUrl | URL of link's icon | String? |
 
 
 ## Installation

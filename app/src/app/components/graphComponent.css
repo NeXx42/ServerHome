@@ -1,0 +1,30 @@
+.Component_Graph {
+    width: 250px;
+    height: 250px;
+}
+
+.Component_Graph-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+    padding: 16px;
+    transition: all 0.25s ease;
+}
+
+.Component_Graph-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.Component_Graph-title {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+}

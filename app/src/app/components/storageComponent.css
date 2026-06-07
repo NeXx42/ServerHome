@@ -1,0 +1,28 @@
+.Component_Storage {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Component_Storage_Element {
+    display: grid;
+    grid-template-columns: 150px 1fr 70px 70px;
+    gap: 15px;
+    text-align: center;
+
+    align-items: center;
+}
+
+.Component_Storage_Element>div {
+    height: 10px;
+
+    background-color: black;
+    overflow: hidden;
+
+    border-radius: 8px;
+}
+
+.Component_Storage_Element>div>div {
+    background-color: red;
+    height: 100%;
+}

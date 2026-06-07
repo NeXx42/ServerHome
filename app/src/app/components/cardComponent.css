@@ -1,0 +1,22 @@
+.Component_Card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    align-items: left;
+    justify-content: center;
+}
+
+.Component_Card>h2 {
+    font-weight: bolder;
+}
+
+.Component_Card>h3 {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.Component_Card>span {
+    font-weight: 300;
+    font-size: 13px;
+}

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
         return (Response.json({ error: "Script not found" }, { status: 500 }));
 
     return new Promise((resolve) => {
-        execFile("sh", [`${BASE_DIR}/${scriptName}.sh`], (err, stdout, stderr) => {
+        execFile("sh", [`${BASE_DIR}/${scriptName}.sh`], { cwd: BASE_DIR }, (err, stdout, stderr) => {
             if (err) {
                 resolve(Response.json({ error: err.message }, { status: 500 }));
                 return;

@@ -5,11 +5,12 @@
     overflow-y: scroll;
 }
 
-.Component_Actions>button {
+.Component_Actions_Entry {
     outline: hidden;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     text-align: left;
     padding: 10px;
@@ -22,7 +23,7 @@
     transition: all .3s;
 }
 
-.Component_Actions>button:hover {
+.Component_Actions_Entry:hover {
     background-color: var(--primary-accent-bg);
     color: var(--primary-accent);
 }

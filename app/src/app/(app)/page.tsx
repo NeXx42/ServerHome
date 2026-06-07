@@ -1,15 +1,10 @@
 export const dynamic = "force-dynamic";
 
-import fs from "fs";
-import path from "path";
-
 import PageClient from "./pageClient";
 import { Config } from "../shared/types";
+import { readConfig } from "../shared/serverHelperFunctions";
 
 export default async function () {
-    const filePath = path.join(process.cwd(), "config/config.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-
-    const config: Config = JSON.parse(raw);
+    const config: Config = readConfig();
     return <PageClient config={config} />
 }

@@ -1,0 +1,13 @@
+# /etc/systemd/system/webhook-consumer.service
+[Unit]
+Description=Dashboard webhook consumer
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/docker/dashboardScripts
+ExecStart=/opt/docker/dashboardScripts/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8787
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

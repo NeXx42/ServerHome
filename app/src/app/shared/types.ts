@@ -8,6 +8,7 @@ export interface GraphData {
 export interface Config {
     title?: string;
     glancesUrl: string;
+    webhookConsumerUrl?: string;
 
     links?: Config_Links[];
     actions?: Config_Actions[];
@@ -23,6 +24,7 @@ export interface Config_Actions {
     name?: string;
     description?: string;
     scriptName?: string;
+    curlName?: string;
 }
 
 

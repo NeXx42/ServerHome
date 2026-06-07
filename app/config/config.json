@@ -1,6 +1,7 @@
 {
     "title": "Home Server",
     "glancesUrl": "http://192.168.0.10:61208/",
+    "webhookConsumerUrl": "http://host.docker.internal:8787",
     "links": [
         {
             "name": "Adguard",
@@ -12,7 +13,7 @@
         {
             "name": "Update Yugen",
             "description": "repulls that latest version of yugen",
-            "scriptName": "updateYugen"
+            "curlName": "updateYugen"
         }
     ]
 }

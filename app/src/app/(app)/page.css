@@ -1,18 +1,56 @@
-.Elements {
+.HomePage {
     width: 70%;
     margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
+.HomePage_Info {
+    display: flex;
+    justify-content: space-between;
+}
 
-.Container {
+.HomePage_Info_Polling {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.HomePage_Info_Polling>div {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 5px;
+
     background-color: var(--color-background-primary);
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg);
+}
 
-    padding: 10px;
+.HomePage_Info_Polling>div>button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0px 5px;
+
+    cursor: pointer;
+}
+
+.HomePage_Info_Polling>div>button.Selected {
+    color: var(--primary-accent);
+    background-color: var(--primary-accent-bg);
+}
+
+.Elements {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 120px);
+    gap: 15px;
 }

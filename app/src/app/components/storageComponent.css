@@ -14,15 +14,15 @@
 }
 
 .Component_Storage_Element>div {
-    height: 10px;
+    height: 8px;
 
-    background-color: black;
+    background-color: rgb(11, 11, 11);
     overflow: hidden;
 
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .Component_Storage_Element>div>div {
-    background-color: red;
+    border-radius: 15px;
     height: 100%;
 }

@@ -1,3 +1,5 @@
+import "./component.css"
+
 interface Props {
     children?: any;
 

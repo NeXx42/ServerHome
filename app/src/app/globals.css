@@ -2,8 +2,14 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  --color-background-primary: light-dark(rgba(255, 255, 255, 1), rgba(48, 48, 46, 1));
-  --color-border-tertiary: light-dark(rgba(31, 30, 29, 0.15), rgba(222, 220, 209, 0.15));
+  --color-background-primary: #141414;
+  --color-border-tertiary: #222;
+
+  --primary-accent: #b5a8ff;
+  --primary-accent-bg: #685bb2;
+  --primary-accent-tr: rgba(181, 168, 255, 0.25);
+  --primary-accent-dk-tr: rgba(181, 168, 255, 0.1);
+
   --border-radius-lg: 8px;
 }
 

@@ -3,8 +3,22 @@ import { GlancesInfo_FileSystem } from "../shared/types";
 
 import "./storageComponent.css"
 
-export default function ({ fs }: { fs: GlancesInfo_FileSystem[] }) {
+const StorageColouring = [
+    {
+        endPercentage: 66,
+        colour: "#22c55e"
+    },
+    {
+        endPercentage: 80,
+        colour: "#f59e0b"
+    },
+    {
+        endPercentage: 1000,
+        colour: "#ef4444"
+    }
+]
 
+export default function ({ fs }: { fs: GlancesInfo_FileSystem[] }) {
     return (<div className="Component_Storage">
         {
             fs.map(f =>
@@ -13,7 +27,7 @@ export default function ({ fs }: { fs: GlancesInfo_FileSystem[] }) {
                         {f.mnt_point}
                     </span>
                     <div>
-                        <div style={{ width: `${f.percent}%` }} />
+                        <div style={{ width: `${f.percent}%`, backgroundColor: StorageColouring.find(x => (f?.percent ?? 0) < x.endPercentage)?.colour }} />
                     </div>
                     <span>
                         {`${f.percent?.toFixed(0)}%`}

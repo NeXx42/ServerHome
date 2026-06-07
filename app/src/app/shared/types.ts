@@ -16,6 +16,9 @@ export interface GlancesInfo {
     fs?: GlancesInfo_FileSystem[];
     mem?: GlancesInfo_Mem;
     containers?: GlancesInfo_Docker[];
+    diskio?: GlancesInfo_DiskIO[];
+    network?: GlancesInfo_Network[];
+    sensors?: GlancesInfo_Sensor[];
 }
 
 export interface GlancesInfo_ProcessCount {
@@ -153,4 +156,57 @@ export interface GlancesInfo_Docker_Network {
     time_since_update?: number;
     rx?: number;
     tx?: number;
+}
+
+export interface GlancesInfo_DiskIO {
+    read_count?: number;
+    write_count?: number;
+    read_bytes?: number;
+    write_bytes?: number;
+    read_time?: number;
+    write_time?: number;
+    key?: string;
+    disk_name?: string;
+    time_since_update?: number;
+    read_count_gauge?: number;
+    read_count_rate_per_sec?: number;
+    write_count_gauge?: number;
+    write_count_rate_per_sec?: number;
+    read_bytes_gauge?: number;
+    read_bytes_rate_per_sec?: number;
+    write_bytes_gauge?: number;
+    write_bytes_rate_per_sec?: number;
+    read_time_gauge?: number;
+    read_time_rate_per_sec?: number;
+    write_time_gauge?: number;
+    write_time_rate_per_sec?: number;
+    read_latency?: number;
+    write_latency?: number;
+}
+
+export interface GlancesInfo_Network {
+    bytes_sent?: number;
+    bytes_recv?: number;
+    speed?: number;
+    key?: string;
+    interface_name?: string;
+    alias?: string;
+    bytes_all?: number;
+    time_since_update?: number;
+    bytes_recv_gauge?: number;
+    bytes_recv_rate_per_sec?: number;
+    bytes_sent_gauge?: number;
+    bytes_sent_rate_per_sec?: number;
+    bytes_all_gauge?: number;
+    bytes_all_rate_per_sec?: number;
+}
+
+export interface GlancesInfo_Sensor {
+    label?: string;
+    unit?: string;
+    value?: number;
+    warning?: number;
+    critical?: number;
+    type?: string;
+    key?: string;
 }

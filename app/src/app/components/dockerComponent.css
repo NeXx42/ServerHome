@@ -8,8 +8,11 @@
 
 .Component_Docker_Element {
     display: grid;
-    grid-template-columns: 1fr max-content 60px;
+    grid-template-columns: 1fr max-content max-content;
     gap: 10px;
+
+    padding: 8px 0px;
+    align-items: center;
 
     border-bottom: 1px solid var(--color-border-tertiary);
 }
@@ -22,4 +25,39 @@
 .Component_Docker_Element_Info {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+}
+
+.Component_Docker_Element_Info>p:first-child {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.Component_Docker_Element_Info>p:last-child {
+    font-size: 12px;
+}
+
+.Component_Docker_Element_Uptime {
+    font-size: 13px;
+}
+
+.Component_Docker_Element_Status {
+    display: flex;
+
+    font-size: 13px;
+
+    background-color: light-dark(rgba(247, 236, 236, 1), rgba(96, 42, 40, 1));
+    color: light-dark(rgba(127, 44, 40, 1), rgba(238, 136, 132, 1));
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    padding: 2px 5px;
+    height: max-content;
+}
+
+.Component_Docker_Element_Status.Active {
+    background-color: light-dark(rgba(233, 241, 220, 1), rgba(27, 70, 20, 1));
+    color: light-dark(rgba(38, 91, 25, 1), rgba(122, 185, 72, 1));
 }

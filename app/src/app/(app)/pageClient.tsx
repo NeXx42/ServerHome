@@ -11,7 +11,13 @@ import { bytesToGiB } from "../shared/helperFunctions";
 import Component from "../components/component";
 import DockerComponent from "../components/dockerComponent";
 
-const updateInterval = 1000;
+const updateIntervals = [
+    500,
+    1000,
+    2000,
+    5000,
+    10000,
+]
 const maxGraphPoints = 100;
 
 const refitGraph = (graph: GraphData[], currentTime: number, newDataPoint: string) => {
@@ -42,6 +48,8 @@ export default function () {
     const [cpuData, setCpuData] = useState<GraphData[]>([]);
     const [memoryData, setMemoryData] = useState<GraphData[]>([]);
 
+    const [currentPollInterval, setCurrentPollInterval] = useState(1);
+
     useEffect(() => {
         const work = () => {
             fetchSysInfo()
@@ -55,28 +63,41 @@ export default function () {
         }
 
         work();
-        const timer = setInterval(() => work(), updateInterval);
+        const timer = setInterval(() => work(), updateIntervals[currentPollInterval]);
 
         return () => clearInterval(timer);
-    }, [updateInterval]);
+    }, [currentPollInterval]);
 
+    const aliveContainerCount = sysInfo?.containers?.filter(c => c.status === "running" || c.status === "healthy").length ?? 0;
 
     return (
         <div className="HomePage">
-            <h1>Server Dashboard</h1>
+            <div className="HomePage_Info">
+                <h1>Server Dashboard</h1>
+                <div className="HomePage_Info_Polling">
+                    Poll rate
+                    <div>
+                        <button className={currentPollInterval === 0 ? "Selected" : ""} onClick={() => setCurrentPollInterval(0)}>500ms</button>
+                        <button className={currentPollInterval === 1 ? "Selected" : ""} onClick={() => setCurrentPollInterval(1)}>1s</button>
+                        <button className={currentPollInterval === 2 ? "Selected" : ""} onClick={() => setCurrentPollInterval(2)}>2s</button>
+                        <button className={currentPollInterval === 3 ? "Selected" : ""} onClick={() => setCurrentPollInterval(3)}>5s</button>
+                        <button className={currentPollInterval === 4 ? "Selected" : ""} onClick={() => setCurrentPollInterval(4)}>10s</button>
+                    </div>
+                </div>
+            </div>
 
             <div className="Elements">
-                <Component title="CpuUsage">
+                <Component title="CPU Usage">
                     <CardComponent value={`${cpuData[0]?.value ?? "-"}%`} description={`${sysInfo?.cpu?.cpucore} cores - avg`} />
                 </Component>
                 <Component title="Memory Usage">
                     <CardComponent value={`${memoryData[0]?.value ?? "-"}%`} description={`${bytesToGiB(sysInfo?.mem?.used ?? 0)}GB of ${bytesToGiB(sysInfo?.mem?.total ?? 0)}GB`} />
                 </Component>
-                <Component title="-">
-
+                <Component title="Docker">
+                    <CardComponent value={`${aliveContainerCount} / ${sysInfo?.containers?.length ?? 0}`} description={`alive containers`} />
                 </Component>
-                <Component title="-">
-
+                <Component title="Uptime">
+                    <CardComponent value={`${sysInfo?.uptime}`} description="since last restart" />
                 </Component>
 
                 <Component title="CPU Usage" rowSpan={2} columnSpan={2} >

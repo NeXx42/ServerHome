@@ -4,7 +4,7 @@
     gap: 5px;
 
     align-items: left;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .Component_Card>h2 {

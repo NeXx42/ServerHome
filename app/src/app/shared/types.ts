@@ -22,7 +22,7 @@ export interface Config_Links {
 export interface Config_Actions {
     name?: string;
     description?: string;
-    scriptLocation?: string;
+    scriptName?: string;
 }
 
 

@@ -12,7 +12,7 @@
         {
             "name": "Update Yugen",
             "description": "repulls that latest version of yugen",
-            "scriptLocation": "/mnt/docker/updateYugen.sh"
+            "scriptName": "updateYugen"
         }
     ]
 }

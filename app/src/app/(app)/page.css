@@ -51,8 +51,10 @@
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(10, 120px);
+    grid-auto-rows: 120px;
     gap: 15px;
+
+    align-items: start;
 }
 
 

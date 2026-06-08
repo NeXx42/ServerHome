@@ -46,7 +46,8 @@
             "type": "storage"
         },
         {
-            "type": "containers"
+            "type": "containers",
+            "showPorts": true
         },
         {
             "type": "actions",

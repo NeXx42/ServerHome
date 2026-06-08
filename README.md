@@ -7,9 +7,7 @@ Very simple dashboard for a home server. All metrics are retrieved from glances.
 
 ## Preview
 
-<img width="1919" height="980" alt="image" src="https://github.com/user-attachments/assets/0fdc366a-5aaa-47eb-9924-2a6947169f45" />
-<img width="1919" height="690" alt="image" src="https://github.com/user-attachments/assets/e33c146a-2e83-48e2-adc3-8233fbaca418" />
-
+<img width="1920" height="1841" alt="image" src="https://github.com/user-attachments/assets/79ea3a21-b98b-4592-9829-3a365ca6fe1a" />
 
 
 ## Configuration

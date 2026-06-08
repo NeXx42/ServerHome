@@ -1,11 +1,21 @@
 import { ReactNode } from "react";
 import PollEventEmitter from "./PollEventEmitter";
 
-export interface GraphData {
-    time: number;
-    relativeTime: number;
+export interface GraphData<T extends GraphDataPoint> {
+    series: GraphSeries[];
+    data: T[],
+}
 
-    value: string,
+export interface GraphSeries {
+    fieldName: string;
+
+    lineColour: string;
+    areaColour: string;
+}
+
+export interface GraphDataPoint {
+    time?: number,
+    relativeTime?: number;
 }
 
 export interface ModuleInput {

@@ -12,7 +12,7 @@ export default class PollEventEmitter {
     }
 
     public emit(info: GlancesInfo) {
-        const time = Date.now() / 1000;
+        const time = Date.now();
         this.listeners.forEach(l => l(info, time));
     }
 }

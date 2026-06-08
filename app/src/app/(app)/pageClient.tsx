@@ -19,6 +19,7 @@ import LinksModule from "../modules/linksModule";
 import diskGraphModule from "../modules/diskGraphModule";
 import networkGraphModule from "../modules/networkGraphModule";
 import { Config, Config_Module } from "../shared/config";
+import networkModule from "../modules/networkModule";
 
 export const pollEmitter = new PollEventEmitter();
 
@@ -44,6 +45,7 @@ const ModuleLookup: Record<string, React.ComponentType<ModuleInput<any>>> = {
     memory: MemoryModule,
     docker: DockerModule,
     uptime: UptimeModule,
+    network: networkModule,
     cpuGraph: CpuGraphModule,
     diskGraph: diskGraphModule,
     memoryGraph: MemoryGraphModule,

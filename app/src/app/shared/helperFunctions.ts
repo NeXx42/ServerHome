@@ -1,3 +1,4 @@
+import { Config_Module } from "./config";
 import { GraphData, GraphDataPoint } from "./types";
 
 export const byteToGb = (num: number) => (num * 1e9).toFixed(1);
@@ -22,7 +23,7 @@ export function refitGraph<T extends GraphDataPoint>(graph: GraphData<T>, curren
     }
 }
 
-const colours = [
+export const GraphColours = [
     "#60a5fa",
     "#34d399",
     "#fbbf24",
@@ -54,8 +55,8 @@ export function convertArrayToData<T>(data: T[], nameField: keyof T, valueField:
 
         series.push({
             fieldName: name,
-            lineColour: colours[i],
-            areaColour: colours[i],
+            lineColour: GraphColours[i],
+            areaColour: GraphColours[i],
         });
     }
 
@@ -63,4 +64,20 @@ export function convertArrayToData<T>(data: T[], nameField: keyof T, valueField:
         flatData,
         series
     }
+}
+
+export async function saveConfig<T extends Config_Module>(index: number, config: T): Promise<Response> {
+    const res = await fetch("/api/config", {
+        method: "POST",
+        body: JSON.stringify({
+            id: index,
+            config: config
+        })
+    });
+
+    if (!res.ok)
+        throw new Error("Failed");
+
+    window.location.reload();
+    return res;
 }

@@ -27,10 +27,11 @@
             "type": "docker"
         },
         {
-            "type": "uptime"
+            "type": "network"
         },
         {
-            "type": "cpuGraph"
+            "type": "cpuGraph",
+            "separateCores": false
         },
         {
             "type": "memoryGraph"
@@ -54,11 +55,6 @@
                     "name": "Update Yugen",
                     "description": "repulls the latest version of yugen",
                     "curlName": "updateYugen"
-                },
-                {
-                    "name": "Update Dashboard",
-                    "description": "repulls the latest version of the dashboard",
-                    "curlName": "updateDashboard"
                 }
             ]
         },
@@ -69,36 +65,6 @@
                     "name": "Adguard",
                     "url": "https://adguard.local/",
                     "iconUrl": "https://adguard.local/assets/favicon.png"
-                },
-                {
-                    "name": "Yugen",
-                    "url": "https://yugen.local/home",
-                    "iconUrl": "https://yugen.local/favicon.ico?favicon.0x3dzn~oxb6tn.ico"
-                },
-                {
-                    "name": "Sonarr",
-                    "url": "http://192.168.0.10:8989/",
-                    "iconUrl": "http://192.168.0.10:8989/Content/Images/Icons/favicon-32x32.png"
-                },
-                {
-                    "name": "Radarr",
-                    "url": "http://192.168.0.10:7878/",
-                    "iconUrl": "http://192.168.0.10:7878/Content/Images/Icons/apple-touch-icon.png"
-                },
-                {
-                    "name": "Qbittorrent",
-                    "url": "https://qbittorrent.local/",
-                    "iconUrl": "https://qbittorrent.local/images/qbittorrent-tray.svg"
-                },
-                {
-                    "name": "Nextcloud",
-                    "url": "nextcloud.local/",
-                    "iconUrl": "https://nextcloud.local/index.php/apps/theming/favicon"
-                },
-                {
-                    "name": "Jellyfin",
-                    "url": "https://jellyfin.local/",
-                    "iconUrl": "https://jellyfin.local/web/f5bbb798cb2c65908633.png"
                 }
             ]
         }

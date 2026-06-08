@@ -15,18 +15,28 @@ import {
 import "./graphComponent.css"
 import { GraphData } from "../shared/types";
 
-export default function ({ dataPoints, domain }: { dataPoints: GraphData<any>, domain?: number[] }) {
+interface Props {
+    dataPoints: GraphData<any>;
+
+    domain?: number[];
+    showLegend?: boolean;
+}
+
+export default function (props: Props) {
     return (
         <div className="Component_Graph">
             <ResponsiveContainer>
-                <AreaChart data={dataPoints.data} margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
+                <AreaChart data={props.dataPoints.data} margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
                     <CartesianGrid stroke="#cccccc2f" vertical={false} />
 
-                    <Legend fontSize={10} />
-                    <XAxis dataKey="relativeTime" stroke="rgba(255,255,255,0.5)" tickFormatter={(value) => `${Math.round(value)}s`} axisLine={false} fontSize={12} tickCount={5} minTickGap={70} interval="preserveStartEnd" />
-                    <YAxis stroke="rgba(255,255,255,0.5)" domain={domain} axisLine={false} width={40} fontSize={12} interval="preserveStartEnd" />
                     {
-                        dataPoints.series.map(s => (
+                        (props.showLegend ?? true) && <Legend fontSize={10} />
+                    }
+
+                    <XAxis dataKey="relativeTime" stroke="rgba(255,255,255,0.5)" tickFormatter={(value) => `${Math.round(value)}s`} axisLine={false} fontSize={12} tickCount={5} minTickGap={70} interval="preserveStartEnd" />
+                    <YAxis stroke="rgba(255,255,255,0.5)" domain={props.domain} axisLine={false} width={40} fontSize={12} interval="preserveStartEnd" />
+                    {
+                        props.dataPoints.series.map(s => (
                             <Area
                                 key={s.fieldName}
                                 type="monotone"

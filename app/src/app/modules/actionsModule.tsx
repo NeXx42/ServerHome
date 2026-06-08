@@ -4,6 +4,7 @@ import { Config_Module } from "../shared/config";
 import { ModuleInput } from "../shared/types";
 
 import "./actionsModule.css"
+import { saveConfig } from "../shared/helperFunctions";
 
 export interface Config_Actions extends Config_Module {
     actions?: Config_Action[];
@@ -131,27 +132,10 @@ function Modal({ id, config }: { id: number, config: Config_Actions }): ReactNod
 
     const save = () => {
         setLoading(true);
-        setMsg("");
-
-        fetch("/api/config/actions", {
-            method: "POST",
-            body: JSON.stringify({
-                id: id,
-                config: {
-                    ...config,
-                    actions: actions
-                }
-            })
-        })
-            .then(r => {
-                if (!r.ok)
-                    throw new Error("Failed");
-
-                setMsg("Saved");
-                window.location.reload();
-            })
-            .catch(e => setMsg(`Error: ${e.message}`))
-            .finally(() => setLoading(false));
+        saveConfig<Config_Actions>(id, {
+            ...config,
+            actions: actions
+        }).catch(e => setMsg(`Error: ${e.message}`)).finally(() => setLoading(false));
     }
 
     return (

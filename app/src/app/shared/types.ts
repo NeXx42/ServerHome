@@ -1,9 +1,21 @@
+import { ReactNode } from "react";
+import PollEventEmitter from "./PollEventEmitter";
+
 export interface GraphData {
     time: number;
     relativeTime: number;
 
     value: string,
 }
+
+export interface ModuleInput {
+    config: Config;
+    sysInfo?: GlancesInfo;
+
+    pollEmitter: PollEventEmitter;
+    requestModal: (node: ReactNode | undefined) => void;
+}
+
 
 export interface Config {
     title?: string;

@@ -20,23 +20,32 @@ The config is mounted at /app/config, and is a json file. The structure is the f
 | title              | Title of the dashboard    | String?   |
 | glancesUrl         | URL of glances            | String!   |
 | webhookConsumerUrl | URL used for curl actions | String?   |
-| actions            | List of actions           | Actions[]?|
-| links              | List of links             | Links[]?  |
+| modules            | List of modules           | Module[]?|
 
-### Actions
-| Field       | Description                                                                   | Type    |
-| ----------- | ----------------------------------------------------------------------------- | ------- |
-| name        | Name of action                                                                | String? |
-| description | Description for action                                                        | String? |
-| curlName    | If provided will send POST request to `"{webhookConsumerUrl}/run/{curlName}"` | String? |
-| scriptName  | If provided will run shell script in `/mnt/scripts/{scriptName}`              | String? |
+### Modules
+Each module should be layed out like 
+{
+    "type": "moduleName",
+    ...
+}
 
-### Links
-| Field   | Description        | Type    |
-| ------- | ------------------ | ------- |
-| name    | Name of link       | String? |
-| url     | URL of link        | String? |
-| iconUrl | URL of link's icon | String? |
+All properties are assumed null. These are the following modules, and their properties
+| Module              | Properties               |
+| ------------------ | ------------------------- |
+|cpu|    |
+|memory|    |
+|docker|    |
+|uptime|    |
+|network|    |
+|cpuGraph| separateCores?: boolean   |
+|diskGraph|    |
+|memoryGraph|    |
+|networkGraph|    |
+|storage|    |
+|containers|  showPorts?: boolean  |
+|actions|  actions?: { name?: string, description?: string, curlName?: string, scriptName?: string }[]  |
+|links|  links?: { name?: string, url?: string, iconUrl?: string }[]  |
+
 
 
 ## Installation

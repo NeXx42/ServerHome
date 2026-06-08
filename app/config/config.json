@@ -99,11 +99,6 @@
                     "name": "Jellyfin",
                     "url": "https://jellyfin.local/",
                     "iconUrl": "https://jellyfin.local/web/f5bbb798cb2c65908633.png"
-                },
-                {
-                    "name": "Prowlarr",
-                    "url": "http://192.168.0.10:9696",
-                    "iconUrl": "http://192.168.0.10:9696/Content/Images/Icons/apple-touch-icon.png"
                 }
             ]
         }

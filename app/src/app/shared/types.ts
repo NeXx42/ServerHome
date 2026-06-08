@@ -20,6 +20,8 @@ export interface GraphDataPoint {
 }
 
 export interface ModuleInput<T extends Config_Module> {
+    pos: number,
+
     config: T;
     sysInfo?: GlancesInfo;
 

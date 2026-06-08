@@ -18,7 +18,7 @@ interface Config_Link {
 
 export default function (props: ModuleInput<Config_Links>) {
     return (
-        <Component title="Links" rowSpan={2} columnSpan={4} onEdit={() => props.requestModal(<Modal linksTruth={props.config.links ?? []} />)}>
+        <Component title="Links" rowSpan={2} columnSpan={4} onEdit={() => props.requestModal(<Modal id={props.pos} config={props.config} />)}>
             <div className="Component_Links">
                 {
                     props.config.links?.map(l => <a key={l.url} href={l.url ?? ""} target="_blank">
@@ -31,13 +31,13 @@ export default function (props: ModuleInput<Config_Links>) {
     )
 }
 
-function Modal({ linksTruth }: { linksTruth: Config_Link[] }): ReactNode {
-    const [links, setLinks] = useState<Config_Link[]>(linksTruth);
+function Modal({ id, config }: { id: number, config: Config_Links }): ReactNode {
+    const [links, setLinks] = useState<Config_Link[]>(config.links ?? []);
 
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState<string | undefined>(undefined);
 
-    useEffect(() => setLinks(linksTruth), [linksTruth]);
+    useEffect(() => setLinks(config.links ?? []), [config]);
 
     const addLink = () => {
         setLinks(prev => [
@@ -68,9 +68,15 @@ function Modal({ linksTruth }: { linksTruth: Config_Link[] }): ReactNode {
         setLoading(true);
         setMsg("");
 
-        fetch("/api/config/links", {
+        fetch("/api/config", {
             method: "POST",
-            body: JSON.stringify(links)
+            body: JSON.stringify({
+                id: id,
+                config: {
+                    ...config,
+                    links: links
+                }
+            })
         })
             .then(r => {
                 if (!r.ok)

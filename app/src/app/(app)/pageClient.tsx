@@ -91,6 +91,7 @@ export default function ({ config }: { config: Config }) {
         const Module = ModuleLookup[configEntry.type];
         return Module ? <Module
             key={pos}
+            pos={pos}
             sysInfo={sysInfo}
             config={configEntry}
             requestModal={selectMenu}

@@ -55,7 +55,7 @@ export default function (props: ModuleInput<Config_Actions>) {
 
 
     return (
-        <Component title="Actions" rowSpan={4} columnSpan={2} onEdit={() => props.requestModal(<Modal actionsTruth={props.config.actions ?? []} />)}>
+        <Component title="Actions" rowSpan={4} columnSpan={2} onEdit={() => props.requestModal(<Modal id={props.pos} config={props.config} />)}>
             <div className="Component_Actions">
                 {
                     props.config.actions?.map((a, i) => (
@@ -98,20 +98,18 @@ export default function (props: ModuleInput<Config_Actions>) {
 }
 
 
-function Modal({ actionsTruth }: { actionsTruth: Config_Action[] }): ReactNode {
-    const [actions, setActions] = useState<Config_Action[]>(actionsTruth);
+function Modal({ id, config }: { id: number, config: Config_Actions }): ReactNode {
+    const [actions, setActions] = useState<Config_Action[]>(config.actions ?? []);
 
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState<string | undefined>(undefined);
 
-    useEffect(() => setActions(actionsTruth), [actionsTruth]);
+    useEffect(() => setActions(config.actions ?? []), [config]);
 
     const addLink = () => {
         setActions(prev => [
             ...prev,
-            {
-
-            }
+            {}
         ])
     }
 
@@ -137,7 +135,13 @@ function Modal({ actionsTruth }: { actionsTruth: Config_Action[] }): ReactNode {
 
         fetch("/api/config/actions", {
             method: "POST",
-            body: JSON.stringify(actions)
+            body: JSON.stringify({
+                id: id,
+                config: {
+                    ...config,
+                    actions: actions
+                }
+            })
         })
             .then(r => {
                 if (!r.ok)

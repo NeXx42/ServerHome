@@ -1,5 +1,5 @@
 import { readConfig, saveConfig } from "@/app/shared/serverHelperFunctions";
-import { Config, Config_Links } from "@/app/shared/types";
+import { Config, Config_Links } from "@/app/shared/config";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

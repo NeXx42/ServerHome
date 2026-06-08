@@ -2,7 +2,7 @@ import fs from "fs";
 
 import { execFile } from "child_process";
 import { readConfig } from "@/app/shared/serverHelperFunctions";
-import { Config } from "@/app/shared/types";
+import { Config } from "@/app/shared/config";
 
 const BASE_DIR = "/mnt/scripts";
 

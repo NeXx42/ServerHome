@@ -9,6 +9,7 @@ import {
     AreaChart,
     Area,
     CartesianGrid,
+    Legend,
 } from "recharts";
 
 import "./graphComponent.css"
@@ -21,6 +22,7 @@ export default function ({ dataPoints, domain }: { dataPoints: GraphData<any>, d
                 <AreaChart data={dataPoints.data} margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
                     <CartesianGrid stroke="#cccccc2f" vertical={false} />
 
+                    <Legend fontSize={10} />
                     <XAxis dataKey="relativeTime" stroke="rgba(255,255,255,0.5)" tickFormatter={(value) => `${Math.round(value)}s`} axisLine={false} fontSize={12} tickCount={5} minTickGap={70} interval="preserveStartEnd" />
                     <YAxis stroke="rgba(255,255,255,0.5)" domain={domain} axisLine={false} width={40} fontSize={12} interval="preserveStartEnd" />
                     {

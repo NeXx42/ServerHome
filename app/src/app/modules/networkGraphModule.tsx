@@ -8,7 +8,7 @@ type CpuGraphData = GraphDataPoint & {
     [key: string]: number;
 };
 
-export default function (props: ModuleInput) {
+export default function (props: ModuleInput<any>) {
     const [data, setData] = useState<GraphData<CpuGraphData>>({
         data: [],
         series: []

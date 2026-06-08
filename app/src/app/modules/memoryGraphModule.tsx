@@ -8,7 +8,7 @@ interface MemoryGraphData extends GraphDataPoint {
     mean?: number;
 }
 
-export default function (props: ModuleInput) {
+export default function (props: ModuleInput<any>) {
     const [data, setData] = useState<GraphData<MemoryGraphData>>({
         data: [],
         series: [{

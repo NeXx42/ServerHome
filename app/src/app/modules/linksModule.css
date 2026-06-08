@@ -1,4 +1,49 @@
-.Modal_EditActions {
+.Component_Links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 200px));
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.Component_Links>a {
+    position: relative;
+    aspect-ratio: 10/7;
+
+    background-color: var(--global-secondary-bg);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: all .3s;
+}
+
+.Component_Links>a:hover {
+    background-color: var(--primary-accent-bg);
+    color: var(--primary-accent);
+}
+
+.Component_Links>a:hover>img {
+    filter: grayscale(0);
+}
+
+.Component_Links>a>img {
+    margin: 0px;
+
+    width: 30px;
+    aspect-ratio: 1/1;
+
+    filter: grayscale(100%);
+}
+
+/*   Modal   */
+
+.Modal_EditLinks {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -6,11 +51,11 @@
     transition: all .2s;
 }
 
-.Modal_EditActions>h2 {
+.Modal_EditLinks>h2 {
     text-align: center;
 }
 
-.Modal_EditActions>span {
+.Modal_EditLinks>span {
     color: red;
 
     padding: 15px;
@@ -22,17 +67,17 @@
     text-align: center;
 }
 
-.Modal_EditActions_Container {
+.Modal_EditLinks_Container {
     display: flex;
     flex-direction: column;
     gap: 5px;
 
-    width: 1000px;
+    width: 500px;
     max-height: 500px;
     overflow-y: scroll;
 }
 
-.Modal_EditActions_Entry {
+.Modal_EditLinks_Entry {
     padding: 15px;
 
     background-color: var(--global-secondary-bg);
@@ -44,12 +89,12 @@
     gap: 5px;
 }
 
-.Modal_EditActions_Entry>div {
+.Modal_EditLinks_Entry>div {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 75px 1fr;
 }
 
-.Modal_EditActions_Entry>div>input {
+.Modal_EditLinks_Entry>div>input {
     outline: none;
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg);
@@ -57,7 +102,7 @@
     padding: 5px 5px;
 }
 
-.Modal_EditActions_Entry>button {
+.Modal_EditLinks_Entry>button {
     margin-left: auto;
     width: 100px;
 
@@ -71,13 +116,13 @@
 }
 
 
-.Modal_EditActions_Controls {
+.Modal_EditLinks_Controls {
     display: flex;
     gap: 5px;
     margin-left: auto;
 }
 
-.Modal_EditActions_Controls>button {
+.Modal_EditLinks_Controls>button {
     cursor: pointer;
     padding: 5px 15px;
     width: 60px;

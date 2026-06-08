@@ -8,7 +8,7 @@ type DiskGraphData = GraphDataPoint & {
     [key: string]: number;
 };
 
-export default function (props: ModuleInput) {
+export default function (props: ModuleInput<any>) {
     const [data, setData] = useState<GraphData<DiskGraphData>>({
         data: [],
         series: []

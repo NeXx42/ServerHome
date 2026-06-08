@@ -1,6 +1,6 @@
 "use client"
 import { ReactNode, useEffect, useState } from "react";
-import { Config, GlancesInfo, ModuleInput } from "../shared/types";
+import { GlancesInfo, ModuleInput } from "../shared/types";
 
 import "./page.css"
 import { createPortal } from "react-dom";
@@ -18,6 +18,7 @@ import ActionsModule from "../modules/actionsModule";
 import LinksModule from "../modules/linksModule";
 import diskGraphModule from "../modules/diskGraphModule";
 import networkGraphModule from "../modules/networkGraphModule";
+import { Config, Config_Module } from "../shared/config";
 
 export const pollEmitter = new PollEventEmitter();
 
@@ -37,6 +38,22 @@ async function fetchSysInfo(url: string): Promise<GlancesInfo> {
     return res.json();
 }
 
+
+const ModuleLookup: Record<string, React.ComponentType<ModuleInput<any>>> = {
+    cpu: CpuModule,
+    memory: MemoryModule,
+    docker: DockerModule,
+    uptime: UptimeModule,
+    cpuGraph: CpuGraphModule,
+    diskGraph: diskGraphModule,
+    memoryGraph: MemoryGraphModule,
+    networkGraph: networkGraphModule,
+    storage: StorageModule,
+    containers: ContainersModule,
+    actions: ActionsModule,
+    links: LinksModule,
+}
+
 export default function ({ config }: { config: Config }) {
     const [sysInfo, setSysInfo] = useState<GlancesInfo | undefined>();
     const [currentPollInterval, setCurrentPollInterval] = useState(1);
@@ -49,7 +66,6 @@ export default function ({ config }: { config: Config }) {
                 setSysInfo(r);
                 pollEmitter.emit(r);
             });
-
         }
 
         void work();
@@ -71,20 +87,16 @@ export default function ({ config }: { config: Config }) {
         </div>, document.body)
     }
 
-    const modules: React.ComponentType<ModuleInput>[] = [
-        CpuModule,
-        MemoryModule,
-        DockerModule,
-        UptimeModule,
-        CpuGraphModule,
-        diskGraphModule,
-        MemoryGraphModule,
-        networkGraphModule,
-        StorageModule,
-        ContainersModule,
-        ActionsModule,
-        LinksModule,
-    ];
+    const drawModules = (configEntry: Config_Module, pos: number) => {
+        const Module = ModuleLookup[configEntry.type];
+        return Module ? <Module
+            key={pos}
+            sysInfo={sysInfo}
+            config={configEntry}
+            requestModal={selectMenu}
+            pollEmitter={pollEmitter}
+        /> : null;
+    }
 
     return (
         <div className="HomePage">
@@ -103,15 +115,7 @@ export default function ({ config }: { config: Config }) {
             </div>
 
             <div className="Elements">
-                {modules.map((Module, i) => (
-                    <Module
-                        key={i}
-                        sysInfo={sysInfo}
-                        config={config}
-                        requestModal={selectMenu}
-                        pollEmitter={pollEmitter}
-                    />
-                ))}
+                {config.modules?.map(drawModules)}
             </div>
 
             {drawSubMenu()}

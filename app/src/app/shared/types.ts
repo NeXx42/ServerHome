@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import PollEventEmitter from "./PollEventEmitter";
+import { Config, Config_Module } from "./config";
 
 export interface GraphData<T extends GraphDataPoint> {
     series: GraphSeries[];
@@ -18,37 +19,13 @@ export interface GraphDataPoint {
     relativeTime?: number;
 }
 
-export interface ModuleInput {
-    config: Config;
+export interface ModuleInput<T extends Config_Module> {
+    config: T;
     sysInfo?: GlancesInfo;
 
     pollEmitter: PollEventEmitter;
     requestModal: (node: ReactNode | undefined) => void;
 }
-
-
-export interface Config {
-    title?: string;
-    glancesUrl: string;
-    webhookConsumerUrl?: string;
-
-    links?: Config_Links[];
-    actions?: Config_Actions[];
-}
-
-export interface Config_Links {
-    name?: string;
-    iconUrl?: string;
-    url?: string;
-}
-
-export interface Config_Actions {
-    name?: string;
-    description?: string;
-    scriptName?: string;
-    curlName?: string;
-}
-
 
 
 

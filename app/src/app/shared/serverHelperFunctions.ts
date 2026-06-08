@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 
 import path from "path";
 import fs from "fs";
-import { Config } from "./types";
+import { Config } from "./config";
 
 export function readConfig() {
     const filePath = path.join(process.cwd(), "config/config.json");

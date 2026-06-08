@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GlancesInfo, GraphData, GraphDataPoint, ModuleInput } from "../shared/types";
+import { GraphData, GraphDataPoint, ModuleInput } from "../shared/types";
 import { convertArrayToData, refitGraph } from "../shared/helperFunctions";
 import GraphComponent from "../components/graphComponent";
 import Component from "../components/component";
@@ -16,7 +16,7 @@ export default function (props: ModuleInput) {
 
     useEffect(() => {
         const unsubscribe = props.pollEmitter.subscribe((info, time) => {
-            const data = convertArrayToData(info.percpu ?? [], "cpu_number", "total");
+            const data = convertArrayToData(info.network ?? [], "interface_name", "bytes_all");
 
             setData(prev => {
                 prev.series = data.series;
@@ -30,7 +30,7 @@ export default function (props: ModuleInput) {
     }, []);
 
     return (
-        <Component title="CPU Usage" rowSpan={2} columnSpan={2} >
+        <Component title="Network Usage" rowSpan={2} columnSpan={2} >
             <GraphComponent dataPoints={data} />
         </Component>
     )

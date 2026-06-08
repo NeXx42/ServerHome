@@ -4,19 +4,19 @@ import { convertArrayToData, refitGraph } from "../shared/helperFunctions";
 import GraphComponent from "../components/graphComponent";
 import Component from "../components/component";
 
-type CpuGraphData = GraphDataPoint & {
+type DiskGraphData = GraphDataPoint & {
     [key: string]: number;
 };
 
 export default function (props: ModuleInput) {
-    const [data, setData] = useState<GraphData<CpuGraphData>>({
+    const [data, setData] = useState<GraphData<DiskGraphData>>({
         data: [],
         series: []
     });
 
     useEffect(() => {
         const unsubscribe = props.pollEmitter.subscribe((info, time) => {
-            const data = convertArrayToData(info.percpu ?? [], "cpu_number", "total");
+            const data = convertArrayToData(info.diskio ?? [], "disk_name", "read_time_rate_per_sec");
 
             setData(prev => {
                 prev.series = data.series;
@@ -30,7 +30,7 @@ export default function (props: ModuleInput) {
     }, []);
 
     return (
-        <Component title="CPU Usage" rowSpan={2} columnSpan={2} >
+        <Component title="Disk Usage" rowSpan={2} columnSpan={2} >
             <GraphComponent dataPoints={data} />
         </Component>
     )

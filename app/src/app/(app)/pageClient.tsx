@@ -16,6 +16,8 @@ import StorageModule from "../modules/storageModule";
 import ContainersModule from "../modules/containersModule";
 import ActionsModule from "../modules/actionsModule";
 import LinksModule from "../modules/linksModule";
+import diskGraphModule from "../modules/diskGraphModule";
+import networkGraphModule from "../modules/networkGraphModule";
 
 export const pollEmitter = new PollEventEmitter();
 
@@ -75,7 +77,9 @@ export default function ({ config }: { config: Config }) {
         DockerModule,
         UptimeModule,
         CpuGraphModule,
+        diskGraphModule,
         MemoryGraphModule,
+        networkGraphModule,
         StorageModule,
         ContainersModule,
         ActionsModule,

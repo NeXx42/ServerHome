@@ -3,6 +3,8 @@
     grid-template-columns: repeat(auto-fit, minmax(50px, 200px));
     justify-content: space-around;
     gap: 10px;
+
+    overflow: scroll;
 }
 
 .Component_Links>a {

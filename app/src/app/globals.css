@@ -58,3 +58,33 @@ a {
     color-scheme: dark;
   }
 }
+
+select,
+button {
+  padding: 5px 15px;
+
+  background-color: var(--global-secondary-bg);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+
+  cursor: pointer;
+  transition: all .2s;
+}
+
+select:hover,
+button:hover {
+  color: var(--primary-accent);
+  background-color: var(--primary-accent-tr);
+  border-color: var(--primary-accent);
+}
+
+button.negative {
+  background-color: rgb(186, 30, 30);
+}
+
+select.negative:hover,
+button.negative:hover {
+  color: white;
+  background-color: rgb(171, 53, 53);
+  border-color: red;
+}

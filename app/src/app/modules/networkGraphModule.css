@@ -1,0 +1,30 @@
+.NetworkGraphModal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.NetworkGraphModal_Inputs {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.NetworkGraphModal_Filters {
+    background-color: var(--color-border-tertiary);
+    padding: 10px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.NetworkGraphModal_Filters>div {
+    display: flex;
+    gap: 5px;
+}
+
+.NetworkGraphModal_Submit {
+    margin-left: auto;
+}

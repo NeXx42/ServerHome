@@ -24,6 +24,7 @@ import networkModule from "../modules/networkModule";
 export const pollEmitter = new PollEventEmitter();
 
 const updateIntervals = [
+    100,
     500,
     1000,
     2000,
@@ -58,7 +59,7 @@ const ModuleLookup: Record<string, React.ComponentType<ModuleInput<any>>> = {
 
 export default function ({ config }: { config: Config }) {
     const [sysInfo, setSysInfo] = useState<GlancesInfo | undefined>();
-    const [currentPollInterval, setCurrentPollInterval] = useState(1);
+    const [currentPollInterval, setCurrentPollInterval] = useState(2);
 
     const [currentMenu, setCurrentMenu] = useState<ReactNode | undefined>(undefined)
 
@@ -93,6 +94,7 @@ export default function ({ config }: { config: Config }) {
         const Module = ModuleLookup[configEntry.type];
         return Module ? <Module
             key={pos}
+            pollRate={updateIntervals[currentPollInterval]}
             pos={pos}
             sysInfo={sysInfo}
             config={configEntry}
@@ -108,11 +110,12 @@ export default function ({ config }: { config: Config }) {
                 <div className="HomePage_Info_Polling">
                     Poll rate
                     <div>
-                        <button className={currentPollInterval === 0 ? "Selected" : ""} onClick={() => setCurrentPollInterval(0)}>500ms</button>
-                        <button className={currentPollInterval === 1 ? "Selected" : ""} onClick={() => setCurrentPollInterval(1)}>1s</button>
-                        <button className={currentPollInterval === 2 ? "Selected" : ""} onClick={() => setCurrentPollInterval(2)}>2s</button>
-                        <button className={currentPollInterval === 3 ? "Selected" : ""} onClick={() => setCurrentPollInterval(3)}>5s</button>
-                        <button className={currentPollInterval === 4 ? "Selected" : ""} onClick={() => setCurrentPollInterval(4)}>10s</button>
+                        <button className={currentPollInterval === 0 ? "Selected" : ""} onClick={() => setCurrentPollInterval(0)}>100ms</button>
+                        <button className={currentPollInterval === 1 ? "Selected" : ""} onClick={() => setCurrentPollInterval(1)}>500ms</button>
+                        <button className={currentPollInterval === 2 ? "Selected" : ""} onClick={() => setCurrentPollInterval(2)}>1s</button>
+                        <button className={currentPollInterval === 3 ? "Selected" : ""} onClick={() => setCurrentPollInterval(3)}>2s</button>
+                        <button className={currentPollInterval === 4 ? "Selected" : ""} onClick={() => setCurrentPollInterval(4)}>5s</button>
+                        <button className={currentPollInterval === 5 ? "Selected" : ""} onClick={() => setCurrentPollInterval(5)}>10s</button>
                     </div>
                 </div>
             </div>

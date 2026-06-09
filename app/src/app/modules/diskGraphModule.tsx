@@ -31,7 +31,7 @@ export default function (props: ModuleInput<any>) {
 
     return (
         <Component title="Disk Usage" rowSpan={2} columnSpan={2} >
-            <GraphComponent dataPoints={data} />
+            <GraphComponent dataPoints={data} updateRate={props.pollRate} />
         </Component>
     )
 }

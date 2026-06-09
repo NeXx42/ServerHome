@@ -33,7 +33,7 @@ export default function (props: ModuleInput<any>) {
 
     return (
         <Component title="Memory Usage" rowSpan={2} columnSpan={2}>
-            <GraphComponent dataPoints={data} domain={[0, 100]} showLegend={false} />
+            <GraphComponent dataPoints={data} domain={[0, 100]} showLegend={false} updateRate={props.pollRate} />
         </Component>
     )
 }

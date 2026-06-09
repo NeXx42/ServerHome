@@ -31,13 +31,20 @@
         },
         {
             "type": "cpuGraph",
-            "separateCores": false
+            "separateCores": true
         },
         {
             "type": "memoryGraph"
         },
         {
-            "type": "networkGraph"
+            "type": "networkGraph",
+            "filterIsHide": false,
+            "filters": [
+                "wg0",
+                "wg1",
+                "enp2s0",
+                "lo"
+            ]
         },
         {
             "type": "diskGraph"

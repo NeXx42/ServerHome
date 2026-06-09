@@ -48,7 +48,7 @@ export default function (props: ModuleInput<CPUGraphConfig>) {
 
     return (
         <Component title="CPU Usage" rowSpan={2} columnSpan={2} onEdit={() => props.requestModal(<Modal id={props.pos} configTruth={props.config} />)} >
-            <GraphComponent dataPoints={data} showLegend={data.series.length > 1} />
+            <GraphComponent dataPoints={data} showLegend={data.series.length > 1} updateRate={props.pollRate} />
         </Component>
     )
 }

@@ -18,13 +18,15 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
 }
 
 .HomePage_Info_Polling>div {
+    overflow: hidden;
     height: 100%;
 
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 
     gap: 5px;
 
@@ -79,4 +81,8 @@
     border-radius: var(--border-radius-lg);
 
     padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

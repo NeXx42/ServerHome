@@ -10,14 +10,10 @@ export function refitGraph<T extends GraphDataPoint>(graph: GraphData<T>, curren
     return {
         ...graph,
         data: [
-            ...graph.data.slice(-maxGraphPoints).map(p => ({
-                ...p,
-                relativeTime: ((p.time ?? 0) - currentTime) / 1000
-            })),
+            ...graph.data.slice(-maxGraphPoints),
             {
                 ...data,
                 time: currentTime,
-                relativeTime: 0,
             }
         ]
     }

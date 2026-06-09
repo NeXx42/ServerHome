@@ -16,11 +16,11 @@ export interface GraphSeries {
 
 export interface GraphDataPoint {
     time?: number,
-    relativeTime?: number;
 }
 
 export interface ModuleInput<T extends Config_Module> {
     pos: number,
+    pollRate: number,
 
     config: T;
     sysInfo?: GlancesInfo;

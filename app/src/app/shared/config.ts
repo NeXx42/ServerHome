@@ -1,10 +1,13 @@
-export interface Config {
-    title?: string;
+export interface Config extends ClientConfig {
     glancesUrl: string;
-    webhookConsumerUrl?: string;
+}
 
+export interface ClientConfig {
+    title?: string;
+    webhookConsumerUrl?: string;
     modules?: Config_Module[];
 }
+
 
 export interface Config_Module {
     type: string;

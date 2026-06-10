@@ -70,8 +70,8 @@ export default function (props: Props) {
                                 strokeWidth={2}
                                 fill={s.areaColour}
                                 fillOpacity={0.2}
-                                isAnimationActive={true}
-                                animationDuration={Math.max(props.updateRate * .8, 200)}
+                                isAnimationActive={false}
+                                animationDuration={Math.min(props.updateRate * .8, 200)}
                                 animationEasing="ease-out"
                             />
                         ))

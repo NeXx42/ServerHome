@@ -18,7 +18,7 @@ import ActionsModule from "../modules/actionsModule";
 import LinksModule from "../modules/linksModule";
 import diskGraphModule from "../modules/diskGraphModule";
 import networkGraphModule from "../modules/networkGraphModule";
-import { Config, Config_Module } from "../shared/config";
+import { ClientConfig, Config, Config_Module } from "../shared/config";
 import networkModule from "../modules/networkModule";
 
 export const pollEmitter = new PollEventEmitter();
@@ -36,7 +36,7 @@ async function fetchSysInfo(url: string): Promise<GlancesInfo> {
     if (url.endsWith("/"))
         url = url.substring(0, url.length - 1);
 
-    const res = await fetch(`/api/info?url=${url}`);
+    const res = await fetch(`/api/info?id=${url}`);
     return res.json();
 }
 
@@ -57,7 +57,7 @@ const ModuleLookup: Record<string, React.ComponentType<ModuleInput<any>>> = {
     links: LinksModule,
 }
 
-export default function ({ config }: { config: Config }) {
+export default function ({ config, sessionId }: { config: ClientConfig, sessionId: string }) {
     const [sysInfo, setSysInfo] = useState<GlancesInfo | undefined>();
     const [currentPollInterval, setCurrentPollInterval] = useState(2);
 
@@ -65,7 +65,7 @@ export default function ({ config }: { config: Config }) {
 
     useEffect(() => {
         const work = () => {
-            fetchSysInfo(config.glancesUrl).then(r => {
+            fetchSysInfo(sessionId).then(r => {
                 setSysInfo(r);
                 pollEmitter.emit(r);
             });

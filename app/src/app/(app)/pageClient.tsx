@@ -18,8 +18,9 @@ import ActionsModule from "../modules/actionsModule";
 import LinksModule from "../modules/linksModule";
 import diskGraphModule from "../modules/diskGraphModule";
 import networkGraphModule from "../modules/networkGraphModule";
-import { ClientConfig, Config, Config_Module } from "../shared/config";
+import { ClientConfig, Config_Module } from "../shared/config";
 import networkModule from "../modules/networkModule";
+import containerCPUGraphModule from "../modules/containerCPUGraphModule";
 
 export const pollEmitter = new PollEventEmitter();
 
@@ -55,6 +56,7 @@ const ModuleLookup: Record<string, React.ComponentType<ModuleInput<any>>> = {
     containers: ContainersModule,
     actions: ActionsModule,
     links: LinksModule,
+    containerCpuGraph: containerCPUGraphModule
 }
 
 export default function ({ config, sessionId }: { config: ClientConfig, sessionId: string }) {

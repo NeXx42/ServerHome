@@ -47,6 +47,9 @@
             ]
         },
         {
+            "type": "containerCpuGraph"
+        },
+        {
             "type": "diskGraph"
         },
         {

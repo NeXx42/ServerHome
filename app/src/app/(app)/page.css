@@ -16,9 +16,8 @@
 
 .HomePage_Info_Polling {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
-
 }
 
 .HomePage_Info_Polling>div {

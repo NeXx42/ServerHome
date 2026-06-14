@@ -18,23 +18,25 @@
     ],
     "modules": [
         {
-            "type": "cpu"
+            "type": "cpu",
+            "id": "07343dd8-1f4f-418f-ab87-6c0e6c8dd27e"
         },
         {
-            "type": "memory"
+            "type": "memory",
+            "id": "a0d35e19-73a6-47b5-a3be-46ff67016555"
         },
         {
-            "type": "docker"
+            "type": "docker",
+            "id": "16e390f2-b645-470c-8184-836c0ab9d49e"
         },
         {
-            "type": "network"
+            "type": "network",
+            "id": "385ae2f8-14a4-4a9c-b9e6-b7c49e414a5b"
         },
         {
             "type": "cpuGraph",
-            "separateCores": true
-        },
-        {
-            "type": "memoryGraph"
+            "separateCores": true,
+            "id": "e3755ccf-43b5-4895-a5c5-be26d0871c98"
         },
         {
             "type": "networkGraph",
@@ -44,20 +46,25 @@
                 "wg1",
                 "enp2s0",
                 "lo"
-            ]
+            ],
+            "id": "3a62199d-cce1-4212-8f09-cd2f00ea74d0"
         },
         {
-            "type": "containerCpuGraph"
+            "type": "containerCpuGraph",
+            "id": "b59b45e5-97c5-4bfa-997e-35c0604a3657"
         },
         {
-            "type": "diskGraph"
+            "type": "diskGraph",
+            "id": "2aa1d4d7-3d58-4c11-93aa-f2225ea917bc"
         },
         {
-            "type": "storage"
+            "type": "storage",
+            "id": "fc5b464f-c4c8-464d-9a1c-e4958228d575"
         },
         {
             "type": "containers",
-            "showPorts": true
+            "showPorts": true,
+            "id": "e2945994-bd84-4e4c-96cd-4a8f593423fa"
         },
         {
             "type": "actions",
@@ -67,7 +74,8 @@
                     "description": "repulls the latest version of yugen",
                     "curlName": "updateYugen"
                 }
-            ]
+            ],
+            "id": "79a8f0a4-e221-4ed3-b2bc-4e3b7fa9ded9"
         },
         {
             "type": "links",
@@ -77,7 +85,8 @@
                     "url": "https://adguard.local/",
                     "iconUrl": "https://adguard.local/assets/favicon.png"
                 }
-            ]
+            ],
+            "id": "42cba895-3b70-4278-aa93-ecafe4aaeb8b"
         }
     ]
 }

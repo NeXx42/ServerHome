@@ -1,3 +1,20 @@
+export const moduleTypes = [
+    "cpu",
+    "memory",
+    "docker",
+    "uptime",
+    "network",
+    "cpuGraph",
+    "diskGraph",
+    "memoryGraph",
+    "networkGraph",
+    "storage",
+    "containers",
+    "actions",
+    "links",
+    "containerCpuGraph"] as const;
+export type ModuleType = typeof moduleTypes[number];
+
 export interface Config extends ClientConfig {
     glancesUrl: string;
 }
@@ -10,5 +27,5 @@ export interface ClientConfig {
 
 
 export interface Config_Module {
-    type: string;
+    type: ModuleType;
 }

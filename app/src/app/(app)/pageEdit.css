@@ -1,0 +1,66 @@
+.PageEdit {
+    position: fixed;
+    inset: 0px;
+    backdrop-filter: blur(2px);
+}
+
+.PageEdit_Foldout {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 300px;
+
+    background-color: var(--global-secondary-bg);
+    padding: 5px;
+
+    display: grid;
+    grid-template-rows: auto 30px;
+    box-sizing: border-box;
+}
+
+.PageEdit_Foldout_Entry {
+    padding: 10px;
+    margin-bottom: 5px;
+
+    height: 50px;
+
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+    align-items: center;
+
+    background-color: var(--color-background-primary);
+}
+
+.PageEdit_Foldout_Entry>span {
+    cursor: default;
+}
+
+.PageEdit_Foldout_Entry>svg {
+    cursor: pointer;
+}
+
+.PageEdit_Foldout_Entry>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    aspect-ratio: 1/1;
+}
+
+
+.PageEdit_Items {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.PageEdit_Controls {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+
+    padding: 5px 0px;
+}

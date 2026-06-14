@@ -20,31 +20,31 @@ export function refitGraph<T extends GraphDataPoint>(graph: GraphData<T>, curren
 }
 
 export const GraphColours = [
-    "#60a5fa", // blue
-    "#34d399", // emerald
-    "#fbbf24", // amber
-    "#fb7185", // rose
-    "#a78bfa", // violet
-    "#22d3ee", // cyan
-    "#f97316", // orange
-    "#94a3b8", // slate
-    "#4ade80", // green
-    "#38bdf8", // sky
-    "#f472b6", // pink
-    "#c084fc", // purple
+    "#60a5fa",
+    "#34d399",
+    "#fbbf24",
+    "#fb7185",
+    "#a78bfa",
+    "#22d3ee",
+    "#f97316",
+    "#94a3b8",
+    "#4ade80",
+    "#38bdf8",
+    "#f472b6",
+    "#c084fc",
 
-    "#ef4444", // red
-    "#14b8a6", // teal
-    "#8b5cf6", // indigo
-    "#eab308", // yellow
-    "#06b6d4", // light cyan
-    "#84cc16", // lime
-    "#ec4899", // fuchsia
-    "#6366f1", // indigo
-    "#10b981", // emerald dark
-    "#f43f5e", // rose dark
-    "#0ea5e9", // sky dark
-    "#d946ef", // magenta
+    "#ef4444",
+    "#14b8a6",
+    "#8b5cf6",
+    "#eab308",
+    "#06b6d4",
+    "#84cc16",
+    "#ec4899",
+    "#6366f1",
+    "#10b981",
+    "#f43f5e",
+    "#0ea5e9",
+    "#d946ef",
 ];
 
 export function convertArrayToData<T>(data: T[], nameField: keyof T, valueField: keyof T) {
@@ -76,12 +76,25 @@ export function convertArrayToData<T>(data: T[], nameField: keyof T, valueField:
 }
 
 export async function saveConfig<T extends Config_Module>(index: number, config: T): Promise<Response> {
-    const res = await fetch("/api/config", {
+    const res = await fetch("/api/module", {
         method: "POST",
         body: JSON.stringify({
             id: index,
             config: config
         })
+    });
+
+    if (!res.ok)
+        throw new Error("Failed");
+
+    window.location.reload();
+    return res;
+}
+
+export async function saveModules(modules: Config_Module[]): Promise<Response> {
+    const res = await fetch("/api/modules", {
+        method: "POST",
+        body: JSON.stringify(modules)
     });
 
     if (!res.ok)
